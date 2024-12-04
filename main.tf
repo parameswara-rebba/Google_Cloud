@@ -1,5 +1,5 @@
 provider "google" {
-  project     = "rebba-439511 "
+  project     = "rebba-439511"
   region      = "us-central1"
 }
   
@@ -14,12 +14,12 @@ provider "kubernetes" {
 
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google"
-  project_id                 = "<PROJECT ID>"
+  project_id                 = ""
   name                       = "gke-test-1"
   region                     = "us-central1"
   zones                      = ["us-central1-a", "us-central1-b", "us-central1-f"]
   network                    = "vpc-01"
-  subnetwork                 = "us-central1-01"
+  subnetwork                 = "default"
   ip_range_pods              = "us-central1-01-gke-01-pods"
   ip_range_services          = "us-central1-01-gke-01-services"
   http_load_balancing        = false
@@ -45,7 +45,7 @@ module "gke" {
       logging_variant             = "DEFAULT"
       auto_repair                 = true
       auto_upgrade                = true
-      service_account             = "project-service-account@<PROJECT ID>.iam.gserviceaccount.com"
+      service_account             = "rebba-449@rebba-439511.iam.gserviceaccount.com"
       preemptible                 = false
       initial_node_count          = 80
       accelerator_count           = 1
